@@ -1,0 +1,25 @@
+@using CBelt.Models;
+@model Activity;
+
+<h1>Activity Center</h1>
+<a asp-action="Logout" asp-controller="LoginReg"><button>Logout</button></a>
+<a asp-action="Allactivities">All Activities</a>
+<h4>Organize an Activity</h4>
+<form asp-action="Processactivity" method="POST" asp-controller="Activity">
+    <span asp-validation-for="title"></span><br>
+    <label asp-for="title">Title</label>
+    <input type="text" name="title">
+    <span asp-validation-for="time"></span><br>
+    <label asp-for="time">Time</label>
+    <input type="time" name="time">
+    <span asp-validation-for="date"></span><br>
+    <label asp-for="date">Date</label>
+    <input type="date" name="date">
+    <span asp-validation-for="duration"></span><br>
+    <label asp-for="duration">Duration in Hours</label>
+    <input type="number" name="duration">
+    <span asp-validation-for="description"></span><br>
+    <label asp-for="description">Description of Event</label>
+    <textarea name="description" cols="50" rows="30"></textarea>
+    <input type="submit">
+</form>

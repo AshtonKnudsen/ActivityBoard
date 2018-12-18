@@ -1,0 +1,41 @@
+@using CBelt.Models;
+@model List<Activity>;
+
+<h1>Activity Center</h1>
+<span>Welcome User</span>
+<a asp-action="Logout" asp-controller="LoginReg"><button>Logout</button></a>
+<a asp-action="Addactivity" asp-controller="Activity"><button>Add New Activity</button></a>
+<table>
+    <tr>
+        <th>Activity</th>
+        <th>Date and Time</th>
+        <th>Duration</th>
+        <th>Event Coordinator</th>
+        <th>Number of Participants</th>
+    </tr>
+        @foreach(var a in Model)
+        {
+            <tr>
+                <td><a href="/viewone/@a.activityid">@a.title</a></td>
+                <td>@a.date.ToShortDateString() @@ @a.date.ToString("hh:mm tt")</td>
+                <td>@a.duration Hours!</td>
+                <td>@a.myuser.firstname</td>
+                <td>@a.RSVPS.Count()</td>
+                @if(@ViewBag.userid == @a.myuser.userid)
+                {
+                    <td><a href="/removeactivity/@a.activityid"><button>Remove</button></a></td>
+                }
+                else{
+                    @if(@a.RSVPS.Any(i => i.userid == @ViewBag.userid))
+                    {
+                        <td><a href="/removersvp/@a.activityid"><button>Leave</button></a></td>
+                    }
+                    else{
+                        <td><a href="/join/@a.activityid"><button>join</button></a></td>
+                    }
+                }
+            </tr>
+        }
+
+
+</table>

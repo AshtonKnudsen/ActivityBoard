@@ -1,0 +1,13 @@
+@using CBelt.Models;
+@model Activity;
+<h1>Event: @Model.title</h1>
+<h4>Coordinator : @Model.myuser.firstname @Model.myuser.lastname</h4>
+<h4>EventDetails</h4>
+<p>@Model.description</p>
+<div>
+    <h6>Participants:</h6>
+    @foreach(var user in Model.RSVPS)
+{
+    <p>@user.user.firstname @user.user.lastname</p>
+}
+</div>

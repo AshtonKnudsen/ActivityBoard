@@ -1,0 +1,15 @@
+@using CBelt.Models;
+@model LoginUser;
+
+<h3>Login Here</h3>
+<form asp-action="LoginProcess" method="POST" asp-controller="LoginReg">
+    <h4>Login Existing User</h4>
+    <span asp-validation-for="email"></span><br>
+    <label asp-for="email">Email</label>
+    <input type="text" name="email">
+    <span asp-validation-for="password"></span><br>
+    <label asp-for="password">Password</label>
+    <input type="password" name="password"><br>
+    <input type="submit" name="Login" style="class:button-primary">
+</form>
+<a href="/"><button>Register as a User</button></a>
